@@ -42,7 +42,7 @@ const App = () => {
           <h1>Roman numeral converter</h1>
           {/* Toggle Button for switching themes */}
           <Button variant="secondary" style="outline"
-              width="175px" onPress={toggleTheme}>
+              width="180px" onPress={toggleTheme}>
              {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           </Button>
         </Flex>
