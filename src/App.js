@@ -17,18 +17,36 @@ const App = () => {
     setError(''); // Clear the error when input changes
   };
 
-  const handleConvertClick = () => {
-    const number = parseInt(inputValue);
-
-    // Validate input
-    if (isNaN(number) || number < 1 || number > 3999) {
+  const handleConvertClick = async () => {
+    if (!inputValue || isNaN(inputValue)) {
+      setError('Please enter a valid number.');
+      setOutput('');
+      return;
+    }
+  
+    const number = parseInt(inputValue, 10);
+  
+    if (number < 1 || number > 3999) {
       setError('Please enter a number between 1 and 3999.');
       setOutput('');
-    } else {
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:8080/romannumeral?query=${number}`);
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+  
+      const data = await response.json();
+      setOutput(data.output);
       setError('');
-      setOutput(convertToRoman(number));
+    } catch (err) {
+      setError(err.message || 'Something went wrong.');
+      setOutput('');
     }
   };
+  
 
   const toggleTheme = () => {
     setIsDarkMode(prevMode => !prevMode); // Toggle the theme between true and false
