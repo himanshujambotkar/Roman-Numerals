@@ -4,6 +4,7 @@ const cors = require('cors');
 
 // Reuse the `convertToRoman` function
 const convertToRoman = (num) => {
+  // Mapping the object to their respective integer values
   const romanNumerals = [
     { value: 1000, symbol: 'M' },
     { value: 900, symbol: 'CM' },
@@ -35,6 +36,11 @@ const PORT = 8080;
 
 // Serve the React app from the "dist" folder
 app.use(express.static(path.join(__dirname, 'dist')));
+//origin specifies which origin(s) are allowed to make requests to your server.
+// only requests coming from http://localhost:3000 are allowed
+// In production environment we would update the origin option to the actual 
+// domain where your frontend will be hosted. 
+// Example: add the URL is a yaml config file, and include the veriable here.
 const corsOptions = {
   origin: 'http://localhost:3000',
 };

@@ -28,3 +28,10 @@ npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @
 - Express
 - React Spectrum (for React UI)
 - Adobe React Spectrum (UI component by Adobe, used to implement the dark/light theme and form.
+- Babel to compile modern JS code to be compatible with older versions of beowsers, environment.
+- Webpack will bundle the HTML, CSS, JS code into a single file for deployment.
+- Style loader will inject CSS into the DOM.
+- SASS is CSS preprocessor that adds variables, nested rules, mixins, and more to standard CSS.
+- SASS-Loader is a loader for Webpack to process Sass files and compile them into CSS.
+- html-webpack-plugin is for Webpack to generate an index.html file (or use an existing one) and automatically inject your bundled JavaScript into it.
+- Concurrently is to run multiple commands (like starting both the front-end and back-end servers) concurrently in one terminal.

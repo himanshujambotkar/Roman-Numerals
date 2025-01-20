@@ -9,6 +9,8 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   const root = createRoot(rootElement);
   root.render(
+    // Provider is the container for the Adobe React Spectrum Library.
+    // It must be at the root of the application.
     <Provider theme={defaultTheme}>
       <App />
     </Provider>

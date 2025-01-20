@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { Provider, defaultTheme, darkTheme } from '@adobe/react-spectrum'; // Import both themes
+// Importing Provider and both themes from Adobe React Spectrum to be used as UI component library.
+import { Provider, defaultTheme, darkTheme, Flex, Button } from '@adobe/react-spectrum';
+// CSS file for styling
 import './App.scss';
+// Importing component which includes form and button.
 import ConvertInput from './ConvertInput';
+// Importing component which will display the output.
 import ConvertOutput from './ConvertOutput';
-import { Button, Flex } from '@adobe/react-spectrum'; // Import Button component
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
-  const [isDarkMode, setIsDarkMode] = useState(false); // State to toggle between dark and light mode
+  // Initializing the state to false for dark mode.
+  const [isDarkMode, setIsDarkMode] = useState(false); 
 
   const handleInputChange = (value) => {
     setInputValue(value);
-    setError(''); // Clear the error when input changes
+    // Clear the error when input changes
+    setError(''); 
   };
 
   const handleConvertClick = async () => {
@@ -54,9 +59,11 @@ const App = () => {
     <Provider theme={isDarkMode ? darkTheme : defaultTheme}>
       <div className="container">
         
-        <Flex alignItems="center" justifyContent="space-between">
+        <Flex alignItems={{base: 'flex-start', M: 'center'}} 
+            direction={{ base: 'column', M: 'row' }}
+            justifyContent="space-between">
           <h1>Roman numeral converter</h1>
-          {/* Toggle Button for switching themes */}
+          {/* Toggle button to switch between light and dark mode */}
           <Button variant="secondary" style="outline"
               width="180px" onPress={toggleTheme}>
              {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
@@ -72,8 +79,6 @@ const App = () => {
 
         {/* Convert Output Component */}
         <ConvertOutput value={output} />
-
-      
       </div>
     </Provider>
   );

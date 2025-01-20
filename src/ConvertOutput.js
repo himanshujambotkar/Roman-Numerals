@@ -4,7 +4,8 @@ const ConvertOutput = ({ value }) => {
   return (
     <div className="output">
       <strong>Roman Numeral:</strong> 
-      <span className="roman-value">{value}</span> {/* Display the converted value */}
+      <span className="roman-value">{value}</span> {
+      /* Display the converted value */}
     </div>
   );
 };
