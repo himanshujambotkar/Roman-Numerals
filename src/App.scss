@@ -1,10 +1,4 @@
-$dark-black: #161616;
-$black: #3a3a3a;
-$black-form-control: #000000;
-$light: #f6f6f6;
 $white: #fff;
-$light-form-control: #f4f4f4;
-$black-text: #1a1a1a;
 $error: #d91616;
 
 body {
@@ -17,29 +11,9 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    max-width: 480px;
+    max-width: 640px;
     height: 100vh;
     justify-content: center;
-    h1 {
-        margin-bottom: 64px;
-        color: $black-text;
-    }
-    .enter-number-input-field {
-        display: flex;
-        flex-direction: column;
-    }
-    .convert-button {
-        margin: 24px 0;
-        font-weight: bold;
-        border-radius: 24px;
-        padding: 12px;
-        width: 240px;
-    }
-    .form-control {
-        padding: 8px;
-        margin: 8px 0 16px;
-        border-radius: 4px;
-    }
     .roman-value {
         margin-left: 8px;
     }
@@ -55,33 +29,8 @@ body {
         margin: 4px 0 16px;
     }
 }
-.light-theme {
-    background-color: $light;
-    .convert-button {
-        border: 2px solid $black-text;
-        color:$black-text;
-    }
-    .form-control {
-        border: 1px solid $black-form-control;
-        &:focus-visible{
-            border: 1px solid $black-form-control;
-        }
-    }
-}
-.dark-theme {
-    background-color: $dark-black;
-    color: $white;
-    .convert-button {
-        border: 2px solid $white;
+.VF2-xW_spectrum--dark {
+    h1 {
         color: $white;
-        background-color: $black;
-    }
-    .form-control {
-        border: 1px solid $light-form-control;
-        background-color: $black-form-control;
-        color: $white;
-        &:focus-visible{
-            border: 1px solid $light-form-control;
-        }
     }
 }

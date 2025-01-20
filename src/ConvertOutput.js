@@ -2,9 +2,9 @@ import React from 'react';
 
 const ConvertOutput = ({ value }) => {
   return (
-    <div>
-        <strong>Roman numeral:</strong> 
-        <span className="roman-value">{value}</span>
+    <div className="output">
+      <strong>Roman Numeral:</strong> 
+      <span className="roman-value">{value}</span> {/* Display the converted value */}
     </div>
   );
 };

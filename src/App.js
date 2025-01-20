@@ -1,42 +1,65 @@
 import React, { useState } from 'react';
+import { Provider, defaultTheme, darkTheme } from '@adobe/react-spectrum'; // Import both themes
 import './App.scss';
 import ConvertInput from './ConvertInput';
 import ConvertOutput from './ConvertOutput';
 import convertToRoman from './convertToRoman'; // Import the function
+import { Button, Flex } from '@adobe/react-spectrum'; // Import Button component
 
 const App = () => {
-  const [output, setOutput] = useState(""); // Using useState for state management
-  const [error, setError] = useState("");  // State to handle error messages
-  const [inputValue, setInputValue] = useState(""); // State to store the input value
+  const [inputValue, setInputValue] = useState('');
+  const [output, setOutput] = useState('');
+  const [error, setError] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false); // State to toggle between dark and light mode
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value); // Update the inputValue state as the user types
+  const handleInputChange = (value) => {
+    setInputValue(value);
+    setError(''); // Clear the error when input changes
   };
 
   const handleConvertClick = () => {
     const number = parseInt(inputValue);
 
-    // Validate the input to be a number within the range of 1-3999
+    // Validate input
     if (isNaN(number) || number < 1 || number > 3999) {
-      setError("Please enter a number between 1 and 3999.");
-      setOutput(""); // Clear the output if the input is invalid
+      setError('Please enter a number between 1 and 3999.');
+      setOutput('');
     } else {
-      setError(""); // Clear the error message if the input is valid
-      setOutput(convertToRoman(number)); // Use the imported function to update the output
+      setError('');
+      setOutput(convertToRoman(number));
     }
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(prevMode => !prevMode); // Toggle the theme between true and false
+  };
+
   return (
-    <div className="container">
-      <h1>Roman numeral converter</h1>
-      <ConvertInput 
-        value={inputValue} 
-        onChange={handleInputChange} 
-        onConvert={handleConvertClick} 
-        error={error} 
-      />
-      <ConvertOutput value={output} />
-    </div>
+    <Provider theme={isDarkMode ? darkTheme : defaultTheme}>
+      <div className="container">
+        
+        <Flex alignItems="center" justifyContent="space-between">
+          <h1>Roman numeral converter</h1>
+          {/* Toggle Button for switching themes */}
+          <Button variant="secondary" style="outline"
+              width="130px" onPress={toggleTheme}>
+             {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </Button>
+        </Flex>
+        {/* Convert Input Component */}
+        <ConvertInput 
+          value={inputValue} x
+          onChange={handleInputChange} 
+          onConvert={handleConvertClick} 
+          error={error} 
+        />
+
+        {/* Convert Output Component */}
+        <ConvertOutput value={output} />
+
+      
+      </div>
+    </Provider>
   );
 };
 
