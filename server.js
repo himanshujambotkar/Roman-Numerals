@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 
 // Reuse the `convertToRoman` function
 const convertToRoman = (num) => {
@@ -34,12 +35,16 @@ const PORT = 8080;
 
 // Serve the React app from the "dist" folder
 app.use(express.static(path.join(__dirname, 'dist')));
+const corsOptions = {
+  origin: 'http://localhost:3000',
+};
+app.use(cors(corsOptions));
 
 // API route for Roman numeral conversion
 app.get('/romannumeral', (req, res) => {
   const query = req.query.query;
-
-  // Validate input
+  
+  // Ensure the query exists and is a valid number
   if (!query) {
     return res.status(400).send('Error: Query parameter "query" is required.');
   }
@@ -53,7 +58,7 @@ app.get('/romannumeral', (req, res) => {
   // Convert to Roman numeral
   const romanNumeral = convertToRoman(number);
 
-  // Respond with the result
+  // Return JSON response
   res.json({
     input: query,
     output: romanNumeral,

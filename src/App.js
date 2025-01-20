@@ -3,7 +3,6 @@ import { Provider, defaultTheme, darkTheme } from '@adobe/react-spectrum'; // Im
 import './App.scss';
 import ConvertInput from './ConvertInput';
 import ConvertOutput from './ConvertOutput';
-import convertToRoman from './convertToRoman'; // Import the function
 import { Button, Flex } from '@adobe/react-spectrum'; // Import Button component
 
 const App = () => {
@@ -47,7 +46,6 @@ const App = () => {
     }
   };
   
-
   const toggleTheme = () => {
     setIsDarkMode(prevMode => !prevMode); // Toggle the theme between true and false
   };
