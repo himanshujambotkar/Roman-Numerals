@@ -14,7 +14,7 @@ npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @
 ## How to Run the Project
 
 ### Step 1: Run the API
-1. Navigate to the `romannumeral-api` directory.
+1. Navigate to the `roman-numerals` directory.
 2. Run `npm install` to install dependencies.
 
 ### Step 2: Run the React App
