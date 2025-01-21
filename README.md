@@ -18,7 +18,7 @@ npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @
 2. Run `npm install` to install dependencies.
 
 ### Step 2: Run the React App
-1. Navigate to the `romannumeral-app` directory.
+1. Navigate to the `roman-numerals` directory.
 2. Run `npm install` to install dependencies.
 3. Start the Backend server using `npm run server` on port 8080, "http://localhost:8080.
 4. Start the Frontend server using `npm run start` on port 3000, "http://localhost:3000.
