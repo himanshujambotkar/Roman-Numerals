@@ -1,72 +1,82 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 import ConvertInput from './ConvertInput';
 
 describe('ConvertInput Component', () => {
-  const mockOnChange = jest.fn();
-  const mockOnConvert = jest.fn();
-
+    //checking if the component renders correctly
   it('renders correctly', () => {
     render(
-      <ConvertInput 
-        onChange={mockOnChange} 
-        onConvert={mockOnConvert} 
-        value="" 
-        error="" 
+      <ConvertInput
+        onChange={jest.fn()}
+        error=""
+        onConvert={jest.fn()}
+        value=""
       />
     );
-    
-    // Check that input field and button render
+
+    // check if the input field with label "Enter a number" is present in the DOM.
     expect(screen.getByLabelText(/Enter a number/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Convert to Roman Numeral/i })).toBeInTheDocument();
+
+    // ensuring that the button labeled "Convert to Roman Numeral" is present in the DOM.
+    expect(
+      screen.getByRole('button', { name: /Convert to Roman Numeral/i })
+    ).toBeInTheDocument();
   });
 
-  it('calls onChange handler when input value changes', () => {
+  it('calls onChange when input value changes', async () => {
+    const mockOnChange = jest.fn();
     render(
-      <ConvertInput 
-        onChange={mockOnChange} 
-        onConvert={mockOnConvert} 
-        value="" 
-        error="" 
+      <ConvertInput
+        onChange={mockOnChange}
+        error=""
+        onConvert={jest.fn()}
+        value=""
       />
     );
 
-    const inputField = screen.getByLabelText(/Enter a number/i);
-    userEvent.type(inputField, '123');
+    // Simulate user typing into the input field
+    const input = screen.getByLabelText(/Enter a number/i);
+    await userEvent.type(input, '123'); // stimulates that the User types "123"
 
-    // Assert the onChange handler was called for each keypress
-    expect(mockOnChange).toHaveBeenCalledTimes(3); // 3 characters entered
+    // Verifies that the onChange handler was called three times 
+    expect(mockOnChange).toHaveBeenCalledTimes(3);
   });
 
-  it('calls onConvert handler when the Convert button is clicked', () => {
+  it('calls onConvert when Convert button is clicked', async () => {
+    const mockOnConvert = jest.fn();
     render(
-      <ConvertInput 
-        onChange={mockOnChange} 
-        onConvert={mockOnConvert} 
-        value="123" 
-        error="" 
+      <ConvertInput
+        onChange={jest.fn()}
+        error=""
+        onConvert={mockOnConvert}
+        value="123"
       />
     );
 
-    const button = screen.getByRole('button', { name: /Convert to Roman Numeral/i });
-    userEvent.click(button);
+    // Simulates the click event
+    const button = screen.getByRole('button', {
+      name: /Convert to Roman Numeral/i,
+    });
+    await userEvent.click(button);
 
-    // Assert the onConvert handler was called
     expect(mockOnConvert).toHaveBeenCalled();
   });
 
-  it('displays an error message when there is an error', () => {
+  it('displays error message when there is an error', () => {
     render(
-      <ConvertInput 
-        onChange={mockOnChange} 
-        onConvert={mockOnConvert} 
-        value="" 
-        error="Please enter a valid number." 
+      <ConvertInput
+        onChange={jest.fn()}
+        error="Please enter a valid number."
+        onConvert={jest.fn()}
+        value=""
       />
     );
 
-    // Check for error message
-    expect(screen.getByText(/Please enter a valid number./i)).toBeInTheDocument();
+    // Checking for error message
+    expect(
+      screen.getByText(/Please enter a valid number./i)
+    ).toBeInTheDocument();
   });
 });

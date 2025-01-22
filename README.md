@@ -14,11 +14,11 @@ npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @
 ## How to Run the Project
 
 ### Step 1: Run the API
-1. Navigate to the `roman-numerals` directory.
+1. Navigate to the `Roman-Numerals` directory.
 2. Run `npm install` to install dependencies.
 
 ### Step 2: Run the React App
-1. Navigate to the `roman-numerals` directory.
+1. Navigate to the `Roman-Numerals` directory.
 2. Run `npm install` to install dependencies.
 3. Start the Backend server using `npm run server` on port 8080, "http://localhost:8080.
 4. Start the Frontend server using `npm run start` on port 3000, "http://localhost:3000.
@@ -35,3 +35,13 @@ npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @
 - SASS-Loader is a loader for Webpack to process Sass files and compile them into CSS.
 - html-webpack-plugin is for Webpack to generate an index.html file (or use an existing one) and automatically inject your bundled JavaScript into it.
 - Concurrently is to run multiple commands (like starting both the front-end and back-end servers) concurrently in one terminal.
+
+### Tests
+- Testing framework used - Jest. https://jestjs.io/
+- jest-environment-jsdom : Jest environment package that simulates a browser-like environment using jsdom.
+    It's required when testing components that rely on document, window, or other browser APIs.
+    Jest no longer includes jsdom by default, so installing this package explicitly is necessary.
+- jest-transform-stub : Replaces imports for non-JavaScript assets (like images, styles, or fonts) with an empty object or string during tests.
+
+##### NOTES
+- Make sure the browser or OS theme is in default mode to ensure the 'Switch to light theme' and 'Switch to dark theme' functionality to work.
