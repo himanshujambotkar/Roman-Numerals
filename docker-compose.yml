@@ -7,5 +7,5 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/Roman-Numerals
+      - /Roman-Numerals/node_modules
