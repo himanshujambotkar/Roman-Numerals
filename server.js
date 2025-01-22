@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const promBundle = require('express-prometheus-middleware');
+require('dotenv').config();
 
 // Reuse the `convertToRoman` function
 const convertToRoman = (num) => {
@@ -74,6 +76,18 @@ app.get('/romannumeral', (req, res) => {
 // Catch-all route to serve the React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.use(
+  promBundle({
+    metricsPath: '/metrics',
+    includeMethod: true,
+    includePath: true,
+  })
+);
+
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
 
 // Start the server
