@@ -15,23 +15,23 @@ This project includes:
 3. Installed Webpack server, Babel: 
 npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin css-loader style-loader
  
-#@# How to Run the Project
+## How to Run the Project
 
-### Step 1: Run the API
+## Step 1: Run the API
 1. Navigate to the `Roman-Numerals` directory.
 2. Run `npm install` to install dependencies.
 
-### Step 2: Run the React App
+## Step 2: Run the React App
 1. Navigate to the `Roman-Numerals` directory.
 2. Run `npm install` to install dependencies.
 3. Start the Backend server using `npm run server` on port 8080, "http://localhost:8080.
 4. Start the Frontend server using `npm run start` on port 3000, "http://localhost:3000.
 5. `npm run dev` will start the application in development mode, it will run the Frontend server and Backend server concurrently to fetch the data.
 
-### Dependencies
+## Dependencies
 - Express
 - React Spectrum (for React UI)
-- Adobe React Spectrum (UI component by Adobe, used to implement the dark/light theme and form.
+- Adobe React Spectrum (UI component Library by Adobe), used to implement the dark/light theme and form.
 - Babel to compile modern JS code to be compatible with older versions of beowsers, environment.
 - Webpack will bundle the HTML, CSS, JS code into a single file for deployment.
 - Style loader will inject CSS into the DOM.
@@ -40,14 +40,12 @@ npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @
 - html-webpack-plugin is for Webpack to generate an index.html file (or use an existing one) and automatically inject your bundled JavaScript into it.
 - Concurrently is to run multiple commands (like starting both the front-end and back-end servers) concurrently in one terminal.
 
-### Tests
+## Tests
 - Testing framework used - Jest. https://jestjs.io/
 - jest-environment-jsdom : Jest environment package that simulates a browser-like environment using jsdom.
     It's required when testing components that rely on document, window, or other browser APIs.
     Jest no longer includes jsdom by default, so installing this package explicitly is necessary.
 - jest-transform-stub : Replaces imports for non-JavaScript assets (like images, styles, or fonts) with an empty object or string during tests.
-
-### Docker
 
 ### NOTES
 - Make sure the browser or OS theme is in default mode to ensure the 'Switch to light theme' and 'Switch to dark theme' functionality to work.
